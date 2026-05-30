@@ -52,7 +52,7 @@ class _CategorizationGameState extends State<CategorizationGame> {
       child: Column(
         children: [
           const SizedBox(height: 10),
-          const Text('Drag objek ke warna yang sama'),
+          const Text('Drag the shape to the matching color'),
           const SizedBox(height: 20),
           Expanded(
             child: Center(

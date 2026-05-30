@@ -4,7 +4,7 @@ Resync is a rapid intervention app for acute anxiety episodes with this flow:
 
 1. Home screen with a large primary button.
 2. Pre-session mood slider (1-10).
-3. Mini-game acak (Categorization, Pattern Sequence, Rhythm Tracer).
+3. Random mini-game (Categorization, Pattern Sequence, Rhythm Tracer).
 4. End Session at any time.
 5. Post-session mood slider.
 6. 30-day dashboard based on local storage.
@@ -38,7 +38,7 @@ flutter pub get
 flutter run
 ```
 
-## Struktur Inti
+## Core Structure
 
 - `lib/main.dart`
 - `lib/src/app.dart`

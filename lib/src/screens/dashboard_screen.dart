@@ -76,7 +76,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   _StatCard(
                     title: 'Average Session',
                     value: '${avgDuration.round()} seconds',
-                    subtitle: 'Target 2-5 menit',
+                    subtitle: 'Target 2-5 minutes',
                   ),
                   _StatCard(
                     title: 'Most Played',

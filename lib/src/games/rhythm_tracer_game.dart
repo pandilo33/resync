@@ -105,7 +105,7 @@ class _RhythmTracerGameState extends State<RhythmTracerGame> {
                 child: Card(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Text(_engaged ? 'Terhubung, ikuti alur' : 'Sentuh titik untuk melanjutkan'),
+                    child: Text(_engaged ? 'Connected, follow the flow' : 'Touch the dot to continue'),
                   ),
                 ),
               ),

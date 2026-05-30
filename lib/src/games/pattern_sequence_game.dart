@@ -82,11 +82,11 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
       child: Column(
         children: [
           Text(
-            _showing ? 'Perhatikan pola cahaya' : 'Ulangi pola',
+            _showing ? 'Watch the light pattern' : 'Repeat the pattern',
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 12),
-          Text('Panjang pola: ${_sequence.length}'),
+          Text('Pattern length: ${_sequence.length}'),
           const SizedBox(height: 20),
           Expanded(
             child: GridView.builder(
