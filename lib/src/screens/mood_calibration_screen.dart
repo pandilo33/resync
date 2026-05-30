@@ -55,7 +55,7 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   height: 1.4,
-                  color: Colors.white,
+                  color: AppTheme.headingTeal,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -76,9 +76,9 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                       Text(
                         _getTextForValue(_sliderValue.round()),
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: AppTheme.accentSoft,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
+                              color: AppTheme.headingTeal,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 22,
                             ),
                       ),
                       const SizedBox(height: 36),
@@ -106,8 +106,8 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Calm 😌', style: TextStyle(color: Colors.white70)),
-                            Text('Overwhelmed 😰', style: TextStyle(color: Colors.white70)),
+                            Text('Calm 😌', style: TextStyle(color: AppTheme.text, fontWeight: FontWeight.w500)),
+                            Text('Overwhelmed 😰', style: TextStyle(color: AppTheme.text, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),

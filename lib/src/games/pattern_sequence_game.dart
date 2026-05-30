@@ -18,6 +18,7 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
 
   bool _showing = true;
   int _flashIndex = -1;
+  int _tappedIndex = -1;
 
   @override
   void initState() {
@@ -31,6 +32,7 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
       _showing = true;
       _input.clear();
       _flashIndex = -1;
+      _tappedIndex = -1;
     });
 
     await Future<void>.delayed(const Duration(milliseconds: 300));
@@ -55,9 +57,15 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
   }
 
   Future<void> _onTap(int index) async {
-    if (_showing) {
+    if (_showing || _tappedIndex != -1) {
       return;
     }
+
+    // Dynamic responsive tap feedback
+    setState(() => _tappedIndex = index);
+    await Future<void>.delayed(const Duration(milliseconds: 150));
+    if (!mounted) return;
+    setState(() => _tappedIndex = -1);
 
     _input.add(index);
     final position = _input.length - 1;
@@ -70,8 +78,6 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
     if (_input.length == _sequence.length) {
       _sequence.add(_random.nextInt(9));
       await _playSequence();
-    } else {
-      setState(() {});
     }
   }
 
@@ -98,20 +104,25 @@ class _PatternSequenceGameState extends State<PatternSequenceGame> {
               ),
               itemCount: 9,
               itemBuilder: (context, index) {
-                final highlighted = _flashIndex == index;
+                final highlighted = _flashIndex == index || _tappedIndex == index;
                 return InkWell(
                   borderRadius: BorderRadius.circular(18),
                   onTap: () => _onTap(index),
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 180),
+                    duration: const Duration(milliseconds: 120),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
-                      color: highlighted ? AppTheme.accentSoft : AppTheme.surfaceAlt,
+                      color: highlighted ? AppTheme.accent : AppTheme.surface,
+                      border: Border.all(
+                        color: highlighted ? AppTheme.accent : AppTheme.surfaceAlt,
+                        width: 2,
+                      ),
                       boxShadow: highlighted
                           ? [
                               BoxShadow(
-                                color: AppTheme.accentSoft.withValues(alpha: 0.65),
-                                blurRadius: 16,
+                                color: AppTheme.accent.withValues(alpha: 0.65),
+                                blurRadius: 18,
+                                spreadRadius: 1,
                               ),
                             ]
                           : null,

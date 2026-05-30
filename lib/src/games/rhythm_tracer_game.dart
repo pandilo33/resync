@@ -114,7 +114,7 @@ class _RhythmTracerGameState extends State<RhythmTracerGame> {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: AppTheme.headingTeal,
                       ),
                     ),
                   ),

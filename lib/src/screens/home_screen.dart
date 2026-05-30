@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dashboard_screen.dart';
 import 'game_session_screen.dart';
 import 'mood_calibration_screen.dart';
+import '../theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,22 +30,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resync'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const DashboardScreen()),
-              );
-            },
-            icon: const Icon(Icons.insights_outlined),
-            tooltip: 'History / Dashboard',
-          ),
-        ],
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF111816), Color(0xFF16211D), Color(0xFF22302C)],
+            colors: [Color(0xFFE1F5EE), Color(0xFFCCEFE3), Color(0xFFBBE9D8)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -71,6 +61,27 @@ class HomeScreen extends StatelessWidget {
                   child: const Text(
                     'Start Resync',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                OutlinedButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const DashboardScreen()),
+                    );
+                  },
+                  icon: const Icon(Icons.insights_outlined, size: 20),
+                  label: const Text(
+                    'View Dashboard',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppTheme.headingTeal,
+                    side: const BorderSide(color: AppTheme.accentSoft, width: 1.5),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
                 ),
               ],

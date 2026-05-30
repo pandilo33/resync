@@ -23,7 +23,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Personal Regulation Dashboard')),
+      appBar: AppBar(title: const Text('Dashboard')),
       body: FutureBuilder<List<ResyncSession>>(
         future: _sessionsFuture,
         builder: (context, snapshot) {
@@ -64,6 +64,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
+              Text(
+                'Personal Regulation Dashboard',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      color: AppTheme.headingTeal,
+                      fontSize: 22,
+                    ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'Track your emotional grounding sessions and progress over the past 30 days.',
+                style: TextStyle(color: AppTheme.muted, fontSize: 14),
+              ),
+              const SizedBox(height: 24),
               Wrap(
                 spacing: 12,
                 runSpacing: 12,

@@ -9,6 +9,8 @@ import '../models/resync_session.dart';
 import '../services/session_storage.dart';
 import 'dashboard_screen.dart';
 import 'mood_calibration_screen.dart';
+import '../theme/app_theme.dart';
+import 'session_recap_screen.dart';
 
 enum GameType {
   categorization('Categorization'),
@@ -68,7 +70,7 @@ class _GameSessionScreenState extends State<GameSessionScreen> {
     }
 
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const DashboardScreen()),
+      MaterialPageRoute(builder: (_) => SessionRecapScreen(session: session)),
       (route) => route.isFirst,
     );
   }
@@ -90,11 +92,24 @@ class _GameSessionScreenState extends State<GameSessionScreen> {
       appBar: AppBar(
         title: Text(_gameType.label),
         actions: [
-          IconButton(
-            onPressed: _finishSession,
-            icon: const Icon(Icons.stop_circle_outlined),
-            tooltip: 'End Session',
-            color: Colors.white70,
+          Padding(
+            padding: const EdgeInsets.only(right: 12, top: 10, bottom: 10),
+            child: OutlinedButton(
+              onPressed: _finishSession,
+              style: OutlinedButton.styleFrom(
+                backgroundColor: const Color(0xFFFAECE7),
+                foregroundColor: const Color(0xFF8C3A2B),
+                side: const BorderSide(color: Color(0xFF8C3A2B), width: 1.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+              ),
+              child: const Text(
+                'End',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
+            ),
           ),
         ],
       ),
