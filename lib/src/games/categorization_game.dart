@@ -17,9 +17,9 @@ class _CategorizationGameState extends State<CategorizationGame> {
   int _glowBin = -1;
 
   final List<Color> _colors = const [
-    Color(0xFF60A5FA),
-    Color(0xFF34D399),
-    Color(0xFFF59E0B),
+    Color(0xFF8FA7BF), // Soothing Mist Blue
+    Color(0xFF8AA399), // Soothing Pale Green / Sage
+    Color(0xFFD5C3A6), // Soothing Warm Taupe / Sand
   ];
 
   @override

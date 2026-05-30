@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color bg = Color(0xFF0B1220);
-  static const Color surface = Color(0xFF141D2C);
-  static const Color surfaceAlt = Color(0xFF1C2740);
-  static const Color accent = Color(0xFF7F9CF5);
-  static const Color accentSoft = Color(0xFF93C5FD);
-  static const Color calm = Color(0xFF34D399);
-  static const Color warning = Color(0xFFF59E0B);
-  static const Color text = Color(0xFFE5E7EB);
-  static const Color muted = Color(0xFF94A3B8);
+  static const Color bg = Color(0xFF111816);         // Deep forest sage-dark (very low-stimulation)
+  static const Color surface = Color(0xFF1A2220);    // Soothing sage surface
+  static const Color surfaceAlt = Color(0xFF25312D); // Medium sage-slate
+  static const Color accent = Color(0xFF8AA399);     // Calming pale green/sage
+  static const Color accentSoft = Color(0xFFAEC2B6); // Soothing pale willow green
+  static const Color calm = Color(0xFF8FA7BF);       // Cool mist blue / soft ocean blue
+  static const Color warning = Color(0xFFD5C3A6);    // Warm neutral taupe / cream
+  static const Color text = Color(0xFFEDE9E2);       // Soft cozy ivory cream
+  static const Color muted = Color(0xFFADA9A2);      // Earthy muted taupe
 
   static ThemeData get darkTheme {
     const base = ColorScheme.dark(
@@ -17,10 +17,10 @@ class AppTheme {
       secondary: accentSoft,
       surface: surface,
       error: warning,
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
+      onPrimary: bg,
+      onSecondary: bg,
       onSurface: text,
-      onError: Colors.black,
+      onError: bg,
     );
 
     return ThemeData(
