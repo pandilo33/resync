@@ -17,10 +17,28 @@ class MoodCalibrationScreen extends StatefulWidget {
 class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
   double _sliderValue = 7;
 
+  String _getEmojiForValue(int value) {
+    if (value <= 2) return '😌';
+    if (value <= 4) return '🙂';
+    if (value <= 6) return '😐';
+    if (value <= 8) return '😰';
+    return '😩';
+  }
+
+  String _getTextForValue(int value) {
+    if (value <= 2) return 'Calm & Peaceful';
+    if (value <= 4) return 'Doing Okay';
+    if (value <= 6) return 'Slightly Tense';
+    if (value <= 8) return 'Quite Anxious';
+    return 'Very Overwhelmed';
+  }
+
   @override
   Widget build(BuildContext context) {
-    final title = widget.isPreSession ? 'Pre-Session Check-In' : 'Post-Session Check-In';
-    final button = widget.isPreSession ? 'Start' : 'Finish';
+    final instruction = widget.isPreSession
+        ? "Let's take a moment to check in.\nHow are you feeling right now?"
+        : "Take a deep breath.\nHow is your mind feeling now?";
+    final button = widget.isPreSession ? 'Start Resync' : 'Finish & Save';
 
     return Scaffold(
       appBar: AppBar(title: const Text('Mood Calibration')),
@@ -29,24 +47,40 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(title, style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 8),
-            const Text('Slide from 1 (Calm) to 10 (Overwhelmed).'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Text(
+                instruction,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  height: 1.4,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
             const SizedBox(height: 24),
             Expanded(
               child: Card(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        _sliderValue.round().toString(),
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        _getEmojiForValue(_sliderValue.round()),
+                        style: const TextStyle(fontSize: 72),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Level ${_sliderValue.round()} — ${_getTextForValue(_sliderValue.round())}',
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
                               color: AppTheme.accentSoft,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
                             ),
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 36),
                       Slider(
                         value: _sliderValue,
                         min: 1,
@@ -56,12 +90,15 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                         onChanged: (value) => setState(() => _sliderValue = value),
                       ),
                       const SizedBox(height: 16),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Calm'),
-                          Text('Overwhelmed'),
-                        ],
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Calm 😌', style: TextStyle(color: Colors.white70)),
+                            Text('Overwhelmed 😰', style: TextStyle(color: Colors.white70)),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -75,7 +112,10 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                 minimumSize: const Size.fromHeight(56),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
               ),
-              child: Text(button),
+              child: Text(
+                button,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
             ),
           ],
         ),

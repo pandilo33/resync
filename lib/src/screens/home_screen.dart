@@ -63,14 +63,14 @@ class HomeScreen extends StatelessWidget {
                 FilledButton(
                   onPressed: () => _startResync(context),
                   style: FilledButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 140),
+                    minimumSize: const Size(240, 60),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(28),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                   child: const Text(
                     'Start Resync',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
               ],
