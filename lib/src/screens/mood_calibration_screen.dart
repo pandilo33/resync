@@ -74,20 +74,31 @@ class _MoodCalibrationScreenState extends State<MoodCalibrationScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Level ${_sliderValue.round()} — ${_getTextForValue(_sliderValue.round())}',
+                        _getTextForValue(_sliderValue.round()),
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                               color: AppTheme.accentSoft,
                               fontWeight: FontWeight.w600,
+                              fontSize: 20,
                             ),
                       ),
                       const SizedBox(height: 36),
-                      Slider(
-                        value: _sliderValue,
-                        min: 1,
-                        max: 10,
-                        divisions: 9,
-                        label: _sliderValue.round().toString(),
-                        onChanged: (value) => setState(() => _sliderValue = value),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 12,
+                          trackShape: const RoundedRectSliderTrackShape(),
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 14,
+                            elevation: 4,
+                          ),
+                          overlayShape: const RoundSliderOverlayShape(overlayRadius: 26),
+                          showValueIndicator: ShowValueIndicator.never,
+                        ),
+                        child: Slider(
+                          value: _sliderValue,
+                          min: 1,
+                          max: 10,
+                          onChanged: (value) => setState(() => _sliderValue = value),
+                        ),
                       ),
                       const SizedBox(height: 16),
                       const Padding(
