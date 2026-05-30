@@ -66,12 +66,12 @@ class _RhythmTracerGameState extends State<RhythmTracerGame> {
           onPanStart: (details) {
             _finger = details.localPosition;
             final distance = (_finger - target).distance;
-            setState(() => _engaged = distance <= 36);
+            setState(() => _engaged = distance <= 64);
           },
           onPanUpdate: (details) {
             _finger = details.localPosition;
             final distance = (_finger - target).distance;
-            setState(() => _engaged = distance <= 36);
+            setState(() => _engaged = distance <= 64);
           },
           onPanEnd: (_) => setState(() => _engaged = false),
           child: Stack(
@@ -100,12 +100,23 @@ class _RhythmTracerGameState extends State<RhythmTracerGame> {
                 ),
               ),
               Positioned(
-                left: 12,
-                top: 12,
+                left: 16,
+                right: 16,
+                top: 16,
                 child: Card(
+                  color: AppTheme.surface.withValues(alpha: 0.85),
+                  elevation: 2,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Text(_engaged ? 'Connected, follow the flow' : 'Touch the dot to continue'),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                    child: Text(
+                      _engaged ? 'Connected, follow the flow' : 'Touch the dot to continue',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
